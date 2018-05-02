@@ -67,7 +67,7 @@ public class Turristea extends AppCompatActivity
             f=new OpinionFragment();
             fragmenTransaction = true;
         } else if (id == R.id.nav_registrar) {
-            f=new RegistrarUsuarioFragment();
+            f= new RegistrarUsuarioFragment();
             fragmenTransaction = true;
         } else if (id == R.id.nav_sesion) {
             f = new IniciarSesionFragment();
