@@ -86,9 +86,6 @@ public class Turristea extends AppCompatActivity
             fragmenTransaction = true;
         }*/
 
-
-
-
         if(fragmenTransaction){
             getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,f).commit();
             item.setChecked(true);
