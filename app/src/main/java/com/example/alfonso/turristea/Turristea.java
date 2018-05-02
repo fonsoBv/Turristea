@@ -72,7 +72,7 @@ public class Turristea extends AppCompatActivity
         } else if (id == R.id.nav_sesion) {
             f = new IniciarSesionFragment();
             fragmenTransaction = true;
-        } else if (id == R.id.nav_form_interes) {
+        } /*else if (id == R.id.nav_form_interes) {
             f = new FormularioInteresFragment();
             fragmenTransaction = true;
         }else if (id == R.id.nav_ver_perfil) {
@@ -84,7 +84,7 @@ public class Turristea extends AppCompatActivity
         }else if (id == R.id.nav_crear_perfil) {
             f = new CrearPerfilFragment();
             fragmenTransaction = true;
-        }
+        }*/
 
 
 
