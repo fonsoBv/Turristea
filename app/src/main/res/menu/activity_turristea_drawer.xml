@@ -19,6 +19,9 @@
     <item android:title="Cuenta">
         <menu>
             <item
+                android:id="@+id/nav_form_interes"
+                android:title="Formulario de intereses" />
+            <item
                 android:id="@+id/nav_sesion"
                 android:title="Iniciar Sesión" />
             <item
