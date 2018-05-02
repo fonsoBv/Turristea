@@ -1,0 +1,33 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.alfonso.turristea.InformacionFragment">
+
+    <LinearLayout
+
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center_horizontal"
+            android:text="Esta aplicación fue desarrollada con la finalidad de facilitar a las personas el acceso a información con respecto a sitios y atractivos turísticos del cantón de Turrialba.\nNuestra mayor prioridad es la comodidad de los usuarios para poder consultar y mirar cualquier contenido con respector a lugares en cualquier momento y desde cualquier lugar.\n\n\nDesarrolladores:\n\nAlfonso Brenes Villalobos\nMaynor Calvo Castillo\nKevin Vargas Pereira"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+</FrameLayout>
