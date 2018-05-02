@@ -22,6 +22,15 @@
                 android:id="@+id/nav_form_interes"
                 android:title="Formulario de intereses" />
             <item
+                android:id="@+id/nav_presupuesto"
+                android:title="Presupuesto" />
+            <item
+                android:id="@+id/nav_crear_perfil"
+                android:title="Crear Perfil" />
+            <item
+                android:id="@+id/nav_ver_perfil"
+                android:title="Ver Perfil" />
+            <item
                 android:id="@+id/nav_sesion"
                 android:title="Iniciar Sesión" />
             <item

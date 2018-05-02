@@ -75,7 +75,19 @@ public class Turristea extends AppCompatActivity
         } else if (id == R.id.nav_form_interes) {
             f = new FormularioInteresFragment();
             fragmenTransaction = true;
+        }else if (id == R.id.nav_ver_perfil) {
+            f = new VerPerfilFragment();
+            fragmenTransaction = true;
+        }else if (id == R.id.nav_presupuesto) {
+            f = new PresupuestoFragment();
+            fragmenTransaction = true;
+        }else if (id == R.id.nav_crear_perfil) {
+            f = new CrearPerfilFragment();
+            fragmenTransaction = true;
         }
+
+
+
 
         if(fragmenTransaction){
             getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,f).commit();
