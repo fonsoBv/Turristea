@@ -8,20 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class InformacionFragment extends Fragment {
-
+public class VerPerfilFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
     private String mParam1;
     private String mParam2;
 
-    public InformacionFragment() {
-        // Required empty public constructor
+    public VerPerfilFragment() {
+
     }
 
-    public static InformacionFragment newInstance(String param1, String param2) {
-        InformacionFragment fragment = new InformacionFragment();
+    public VerPerfilFragment newInstance(String param1, String param2) {
+        VerPerfilFragment fragment = new VerPerfilFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -41,6 +40,6 @@ public class InformacionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_informacion, container, false);
+        return inflater.inflate(R.layout.fragment_ver_perfil, container, false);
     }
 }

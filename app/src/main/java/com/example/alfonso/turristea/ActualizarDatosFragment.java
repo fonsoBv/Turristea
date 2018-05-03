@@ -11,6 +11,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class ActualizarDatosFragment extends Fragment implements View.OnClickListener {
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+
+    private String mParam1;
+    private String mParam2;
 
     private EditText etUsername;
     private EditText etContrasena;
@@ -19,16 +24,27 @@ public class ActualizarDatosFragment extends Fragment implements View.OnClickLis
     private Button btnActualizar;
 
     public ActualizarDatosFragment() {
-        // Required empty public constructor
+    }
+
+    public static ActualizarDatosFragment newInstance(String param1, String param2) {
+        ActualizarDatosFragment fragment = new ActualizarDatosFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
     }
 
-
-    public  void init(View rootView){
+    public void init(View rootView){
         this.etUsername = (EditText) rootView.findViewById(R.id.etUsername);
         this.etContrasena = (EditText) rootView.findViewById(R.id.etContrasena);
         this.etNombre = (EditText) rootView.findViewById(R.id.etNombre);

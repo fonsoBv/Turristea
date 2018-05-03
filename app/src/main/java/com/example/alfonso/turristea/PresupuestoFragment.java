@@ -11,27 +11,36 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class OpinionFragment extends Fragment implements View.OnClickListener {
 
+public class PresupuestoFragment extends Fragment implements View.OnClickListener {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
     private String mParam1;
     private String mParam2;
 
-    private Button btnEnviar;
+    private EditText etNumPersonas;
+    private EditText etCantidadDias;
+    private Button btnCalcular;
 
-    public OpinionFragment() {
+    public PresupuestoFragment() {
     }
 
-    public static OpinionFragment newInstance(String param1, String param2) {
-        OpinionFragment fragment = new OpinionFragment();
+    public PresupuestoFragment newInstance(String param1, String param2) {
+        PresupuestoFragment fragment = new PresupuestoFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
+
+    public  void init(View rootView){
+        this.etNumPersonas = (EditText) rootView.findViewById(R.id.etNumPersonas);
+        this.etCantidadDias = (EditText) rootView.findViewById(R.id.etCantidadDias);
+        this.btnCalcular = (Button) rootView.findViewById(R.id.btnCalcular);
+        this.btnCalcular.setOnClickListener(this);
+    }//en init
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,22 +51,15 @@ public class OpinionFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    public void init(View rootView){
-        this.btnEnviar = (Button) rootView.findViewById(R.id.btnEnviar);
-        this.btnEnviar.setOnClickListener(this);
-    }//en init
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_opinion, container, false);
+        return inflater.inflate(R.layout.fragment_presupuesto, container, false);
     }
 
-    @Override
     public void onClick(View v) {
-        if(v.getId()==this.btnEnviar.getId()){
-            Toast.makeText(getContext(),"Enviando comentario", Toast.LENGTH_LONG).show();
+        if(v.getId()==this.btnCalcular.getId()){
+            Toast.makeText(getContext(),"Calculando", Toast.LENGTH_LONG).show();
         }//end if
     }//end onclick
-
 }

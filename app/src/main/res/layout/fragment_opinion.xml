@@ -16,58 +16,64 @@
 
 
         <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/imgViewLogo"
+            android:layout_width="@dimen/center_width"
+            android:layout_height="110dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
             app:srcCompat="@drawable/logo" />
 
         <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
+            android:id="@+id/tvCalificanos"
+            android:layout_width="@dimen/center_width"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
             android:text="Califica nuestra aplicación:"
-            android:textSize="18sp" />
+            android:layout_marginTop="35dp"
+            android:layout_marginLeft="7dp"
+            android:gravity="center"
+            android:typeface="serif"
+            android:textColor="@color/textColor"
+            android:textSize="19sp" />
 
         <RadioGroup
-            android:id="@+id/rdgrupcalificaciones"
-            android:layout_width="match_parent"
+            android:id="@+id/rgCalificanos"
+            android:layout_width="@dimen/center_width"
             android:layout_height="85dp"
             android:orientation="horizontal"
             android:gravity="center"
+            android:layout_marginLeft="10dp"
             android:layout_weight="0.20">
 
             <RadioButton
-                android:id="@+id/opinion_r1"
+                android:id="@+id/rBtnOpinion1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="1" />
 
             <RadioButton
-                android:id="@+id/opinion_r2"
+                android:id="@+id/rBtnOpinion2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="2" />
 
             <RadioButton
-                android:id="@+id/opinion_r3"
+                android:id="@+id/rBtnOpinion3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="3" />
 
             <RadioButton
-                android:id="@+id/opinion_r4"
+                android:id="@+id/rBtnOpinion4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="4" />
 
             <RadioButton
-                android:id="@+id/opinion_r6"
+                android:id="@+id/rBtnOpinion5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -75,25 +81,27 @@
         </RadioGroup>
 
         <EditText
-            android:id="@+id/mtOpinionComentario"
-            android:layout_width="match_parent"
+            android:id="@+id/etComentario"
+            android:layout_width="@dimen/center_width"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:layout_marginTop="10dp"
             android:hint="Agregue su comentario en este apartado"
             android:inputType="textMultiLine"
-            android:textColorHint="@color/colorPrimary"
-            android:textStyle="italic" />
+            android:textColorHint="@color/textColor"
+            android:typeface="serif"/>
 
         <Button
-            android:id="@+id/btnOpinionEnviar"
+            android:id="@+id/btnEnviar"
+            android:text="Enviar"
+            android:layout_marginTop="50dp"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
             android:background="@color/colorPrimary"
+            android:typeface="serif"
             android:gravity="center"
-            android:text="Enviar"
-            android:textColor="@android:color/background_light"
+            android:textColor="#FFFFFF"
             android:textSize="20sp" />
     </LinearLayout>
 

@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single" >
         <item
             android:id="@+id/nav_inicio"
             android:title="Inicio" />
         <item
             android:id="@+id/nav_contenido"
             android:title="Contenido Turístico" />
+        <item
+            android:id="@+id/nav_form_interes"
+            android:title="Formulario de intereses" />
+        <item
+            android:id="@+id/nav_presupuesto"
+            android:title="Calcular presupuesto" />
         <item
             android:id="@+id/nav_info"
             android:title="Información" />
@@ -16,17 +22,14 @@
             android:title="Danos tu opinión" />
     </group>
 
-    <item android:title="">
+    <item android:title="Cuenta">
         <menu>
-            <item
-                android:id="@+id/nav_form_interes"
-                android:title="Formulario de intereses" />
-            <item
-                android:id="@+id/nav_presupuesto"
-                android:title="Presupuesto" />
             <item
                 android:id="@+id/nav_crear_perfil"
                 android:title="Crear Perfil" />
+            <item
+                android:id="@+id/nav_actualizar_datos"
+                android:title="Actualizar Datos" />
             <item
                 android:id="@+id/nav_ver_perfil"
                 android:title="Ver Perfil" />

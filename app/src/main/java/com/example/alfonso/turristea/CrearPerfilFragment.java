@@ -1,6 +1,7 @@
 package com.example.alfonso.turristea;
 
-import android.annotation.SuppressLint;
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,23 +11,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class RegistrarUsuarioFragment extends Fragment implements View.OnClickListener {
+
+public class CrearPerfilFragment extends Fragment implements View.OnClickListener   {
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
     private String mParam1;
     private String mParam2;
 
-    private EditText etRegistrarNombreUsuario;
-    private EditText etRegistrarContrasenia;
-    private EditText etRegistrarConfirmarContrasenia;
-    private Button btnRegistrarUsuario;
+    private EditText etNombre;
+    private EditText etEdad;
+    private Button btnActualizar;
 
-    public RegistrarUsuarioFragment() {
+    public CrearPerfilFragment() {
     }
 
-    public static RegistrarUsuarioFragment newInstance(String param1, String param2) {
-        RegistrarUsuarioFragment fragment = new RegistrarUsuarioFragment();
+    public CrearPerfilFragment newInstance(String param1, String param2) {
+        CrearPerfilFragment fragment = new CrearPerfilFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -44,24 +46,23 @@ public class RegistrarUsuarioFragment extends Fragment implements View.OnClickLi
     }
 
     public  void init(View rootView){
-        this.etRegistrarConfirmarContrasenia = (EditText) rootView.findViewById(R.id.etRegistrarConfirmarContraseña);
-        this.etRegistrarContrasenia = (EditText) rootView.findViewById(R.id.etRegistrarContrasenia);
-        this.btnRegistrarUsuario = (Button) rootView.findViewById(R.id.btnRegistrarUsuario);
-        this.btnRegistrarUsuario.setOnClickListener(this);
+        this.etNombre = (EditText) rootView.findViewById(R.id.etNombre);
+        this.etEdad = (EditText) rootView.findViewById(R.id.etEdad);
+        this.btnActualizar = (Button) rootView.findViewById(R.id.btnActualizar);
+        this.btnActualizar.setOnClickListener(this);
     }//en init
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_registrar_usuario,container,false);
-        init(rootView);
-        return rootView;
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_crear_perfil, container, false);
     }
 
-    @Override
     public void onClick(View v) {
-        if(v.getId()==this.btnRegistrarUsuario.getId()){
-            Toast.makeText(getContext(),"Registrando", Toast.LENGTH_LONG).show();
+        if(v.getId()==this.btnActualizar.getId()){
+            Toast.makeText(getContext(),"Perfil creado", Toast.LENGTH_LONG).show();
         }//end if
     }//end onclick
-}//end class
+
+}

@@ -1,9 +1,23 @@
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.alfonso.turristea.ActualizarDatosFragment">
+    tools:context="com.example.alfonso.turristea.InformacionFragment">
+
+    <LinearLayout
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:orientation="vertical"
+        android:weightSum="1"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,17 +26,6 @@
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="8dp">
 
         <ImageView
             android:id="@+id/imgViewLogo"
@@ -30,48 +33,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="13dp"
             app:srcCompat="@drawable/logo" />
-
-        <TextView
-            android:id="@+id/tvUsername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="Nombre de usuario:"
-            android:textColor="@color/textColor"
-            android:typeface="serif"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/etUsername"
-            android:inputType="textPersonName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textColor="@color/textColor"
-            android:typeface="serif"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvContrasena"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="Contraseña:"
-            android:textColor="@color/textColor"
-            android:typeface="serif"
-            android:textSize="18sp"/>
-
-        <EditText
-            android:id="@+id/etContrasena"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:textColor="@color/textColor"
-            android:typeface="serif"
-            android:textSize="18sp"
-            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvNombre"
@@ -151,16 +112,17 @@
         </RadioGroup>
 
         <Button
-            android:id="@+id/btnActualizar"
+            android:id="@+id/btnCrearPerfil"
             android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:background="@color/colorPrimary"
-            android:text="Actualizar datos"
+            android:text="Crear perfil"
             android:typeface="serif"
             android:textColor="@android:color/background_light" />
-        </LinearLayout>
-        </ScrollView>
+
+    </LinearLayout>
+    </ScrollView>
     </LinearLayout>
 </FrameLayout>

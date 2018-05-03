@@ -10,23 +10,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class RegistrarUsuarioFragment extends Fragment implements View.OnClickListener {
+public class ContenidoTuristicoFragment extends Fragment  {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
     private String mParam1;
     private String mParam2;
 
-    private EditText etRegistrarNombreUsuario;
-    private EditText etRegistrarContrasenia;
-    private EditText etRegistrarConfirmarContrasenia;
-    private Button btnRegistrarUsuario;
 
-    public RegistrarUsuarioFragment() {
+    public ContenidoTuristicoFragment() {
+        // Required empty public constructor
     }
 
-    public static RegistrarUsuarioFragment newInstance(String param1, String param2) {
-        RegistrarUsuarioFragment fragment = new RegistrarUsuarioFragment();
+    public static ContenidoTuristicoFragment newInstance(String param1, String param2) {
+        ContenidoTuristicoFragment fragment = new ContenidoTuristicoFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -44,24 +41,13 @@ public class RegistrarUsuarioFragment extends Fragment implements View.OnClickLi
     }
 
     public  void init(View rootView){
-        this.etRegistrarConfirmarContrasenia = (EditText) rootView.findViewById(R.id.etRegistrarConfirmarContraseña);
-        this.etRegistrarContrasenia = (EditText) rootView.findViewById(R.id.etRegistrarContrasenia);
-        this.btnRegistrarUsuario = (Button) rootView.findViewById(R.id.btnRegistrarUsuario);
-        this.btnRegistrarUsuario.setOnClickListener(this);
     }//en init
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_registrar_usuario,container,false);
+        View rootView = inflater.inflate(R.layout.fragment_contenido_turistico,container,false);
         init(rootView);
         return rootView;
     }
-
-    @Override
-    public void onClick(View v) {
-        if(v.getId()==this.btnRegistrarUsuario.getId()){
-            Toast.makeText(getContext(),"Registrando", Toast.LENGTH_LONG).show();
-        }//end if
-    }//end onclick
-}//end class
+}

@@ -59,7 +59,8 @@ public class Turristea extends AppCompatActivity
             f = new PrincipalFragment();
             fragmenTransaction = true;
         } else if (id == R.id.nav_contenido) {
-
+            f = new ContenidoTuristicoFragment();
+            fragmenTransaction = true;
         } else if (id == R.id.nav_info) {
             f = new InformacionFragment();
             fragmenTransaction = true;
@@ -72,7 +73,10 @@ public class Turristea extends AppCompatActivity
         } else if (id == R.id.nav_sesion) {
             f = new IniciarSesionFragment();
             fragmenTransaction = true;
-        } /*else if (id == R.id.nav_form_interes) {
+        } else if (id == R.id.nav_actualizar_datos){
+            f = new ActualizarDatosFragment();
+            fragmenTransaction = true;
+        }else if (id == R.id.nav_form_interes) {
             f = new FormularioInteresFragment();
             fragmenTransaction = true;
         }else if (id == R.id.nav_ver_perfil) {
@@ -84,7 +88,7 @@ public class Turristea extends AppCompatActivity
         }else if (id == R.id.nav_crear_perfil) {
             f = new CrearPerfilFragment();
             fragmenTransaction = true;
-        }*/
+        }
 
         if(fragmenTransaction){
             getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,f).commit();

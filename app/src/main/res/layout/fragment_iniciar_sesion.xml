@@ -13,54 +13,59 @@
         tools:layout_editor_absoluteY="8dp">
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/imgViewLogo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
             app:srcCompat="@drawable/logo" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/tvUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="Nombre de usuario:"
-            android:textColor="@color/colorPrimary"
-            android:textSize="18sp"
-            android:textStyle="italic" />
+            android:textColor="@color/textColor"
+            android:typeface="serif"
+            android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/etUsername"
+            android:inputType="textPersonName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20sp"
-            android:textStyle="bold|italic" />
+            android:textColor="@color/textColor"
+            android:typeface="serif"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/tvContrasena"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="Contraseña:"
-            android:textColor="@color/colorPrimary"
-            android:textSize="18sp"
-            android:textStyle="italic" />
+            android:textColor="@color/textColor"
+            android:typeface="serif"
+            android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/etContrasena"
+            android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPassword"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20sp" />
+            android:textColor="@color/textColor"
+            android:typeface="serif"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnSesionOlvido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:background="@android:color/background_light"
             android:text="¿Has olvidado tu contraseña?"
             android:textColor="@color/colorPrimary"
@@ -74,6 +79,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:background="@color/colorPrimary"
+            android:typeface="serif"
             android:text="Iniciar Sesion"
             android:textColor="@android:color/background_light" />
 
