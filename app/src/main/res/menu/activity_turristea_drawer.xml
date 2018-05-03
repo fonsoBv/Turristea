@@ -16,7 +16,7 @@
             android:title="Danos tu opinión" />
     </group>
 
-    <item android:title="Cuenta">
+    <item android:title="">
         <menu>
             <item
                 android:id="@+id/nav_form_interes"

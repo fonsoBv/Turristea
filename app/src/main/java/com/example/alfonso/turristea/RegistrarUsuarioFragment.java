@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 public class RegistrarUsuarioFragment extends Fragment implements View.OnClickListener {
 
-
     private EditText etRegistrarNombreUsuario;
     private EditText etRegistrarContrasenia;
     private EditText etRegistrarConfirmarContrasenia;
