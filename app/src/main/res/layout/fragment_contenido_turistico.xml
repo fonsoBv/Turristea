@@ -34,7 +34,7 @@
 
 
             <ImageView
-                android:id="@+id/imgViewLogo"
+                android:id="@+id/imageView"
                 android:layout_width="@dimen/center_width"
                 android:layout_height="110dp"
                 android:layout_marginTop="20dp"
@@ -42,6 +42,7 @@
                 app:srcCompat="@drawable/logo" />
 
             <TextView
+                android:id="@+id/etTitulo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"

@@ -88,6 +88,9 @@ public class Turristea extends AppCompatActivity
         }else if (id == R.id.nav_crear_perfil) {
             f = new CrearPerfilFragment();
             fragmenTransaction = true;
+        }else if (id == R.id.nav_favoritos) {
+            f = new FavoritosFragment();
+            fragmenTransaction = true;
         }
 
         if(fragmenTransaction){

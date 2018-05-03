@@ -23,6 +23,8 @@
             app:srcCompat="@drawable/logo" />
 
         <TextView
+            android:id="@+id/tvTextoBienvenida"
+            android:text="Esta aplicación fue desarrollada con la finalidad de facilitar a las personas el acceso a información con respecto a los atractivos turísticos del cantón de Turrialba.\nNuestra mayor prioridad es la comodidad de los usuarios para poder consultar y mirar cualquier contenido con respector a lugares en cualquier momento y desde cualquier lugar.\n\n\nDesarrolladores:\nAlfonso Brenes Villalobos\nMaynor Calvo Castillo\nKevin Vargas Pereira"
             android:layout_width="@dimen/center_width"
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
@@ -30,7 +32,6 @@
             android:gravity="center"
             android:typeface="serif"
             android:textColor="@color/textColor"
-            android:text="Esta aplicación fue desarrollada con la finalidad de facilitar a las personas el acceso a información con respecto a los atractivos turísticos del cantón de Turrialba.\nNuestra mayor prioridad es la comodidad de los usuarios para poder consultar y mirar cualquier contenido con respector a lugares en cualquier momento y desde cualquier lugar.\n\n\nDesarrolladores:\nAlfonso Brenes Villalobos\nMaynor Calvo Castillo\nKevin Vargas Pereira"
             android:textSize="19sp" />
     </LinearLayout>
 
