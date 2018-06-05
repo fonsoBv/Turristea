@@ -12,4 +12,14 @@
         <item>H</item>
         <item>M</item>
     </string-array>
+    <string-array name="ubicacionarray">
+        <item>Rural</item>
+        <item>Urbano</item>
+    </string-array>
+    <string-array name="tipoviajearray">
+        <item>Cultural</item>
+        <item>Deporte</item>
+        <item>Familiar</item>
+        <item>Negocio</item>
+    </string-array>
 </resources>

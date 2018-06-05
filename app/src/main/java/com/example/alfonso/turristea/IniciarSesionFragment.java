@@ -33,7 +33,6 @@ public class IniciarSesionFragment extends Fragment implements View.OnClickListe
     private EditText etContrasena;
     private Button btnSesionOlvido;
     private Button btnIniciarSesion;
-    android.app.FragmentManager fm1;
 
     public IniciarSesionFragment() {
     }
@@ -65,10 +64,13 @@ public class IniciarSesionFragment extends Fragment implements View.OnClickListe
         this.btnIniciarSesion.setOnClickListener(this);
     }//en init
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_iniciar_sesion, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_iniciar_sesion,container,false);
+        init(rootView);
+        return rootView;
     }
 
     public void iniciarSesion(){
@@ -81,7 +83,9 @@ public class IniciarSesionFragment extends Fragment implements View.OnClickListe
                     @Override
                     public void onResponse(JSONObject response) {
                         if (response != null) {
-                            Toast.makeText(getActivity(),response.toString() , Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(),"Iniciando..." , Toast.LENGTH_LONG).show();
+                            Fragment fr = new PrincipalFragment();
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fr).addToBackStack(null).commit();
                         } else {
                             Toast.makeText(getActivity(), "Error..", Toast.LENGTH_LONG).show();
                         }//if-else
@@ -94,6 +98,7 @@ public class IniciarSesionFragment extends Fragment implements View.OnClickListe
                     }
                 }) {
         };
+
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
 
@@ -103,10 +108,11 @@ public class IniciarSesionFragment extends Fragment implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(v.getId()==this.btnIniciarSesion.getId()){
-            Toast.makeText(getContext(),"Iniciando sesión", Toast.LENGTH_LONG).show();
-            Fragment fr = new PrincipalFragment();
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fr).addToBackStack(null).commit();
-
+            if(this.etContrasena.getText().toString().length()>0 && this.etUsername.getText().toString().length()>0) {
+                iniciarSesion();
+            }else{
+                Toast.makeText(getContext(),"LLene todos los campos de textos",Toast.LENGTH_LONG);
+            }
         }//end if
     }//end onclick
 

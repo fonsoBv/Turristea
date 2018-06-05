@@ -46,28 +46,6 @@ tools:context="com.example.alfonso.turristea.InformacionFragment">
             android:textStyle="bold"
             android:textSize="18sp"/>
 
-        <TextView
-            android:id="@+id/tvTexto1"
-            android:layout_width="@dimen/center_width"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
-            android:layout_marginLeft="7dp"
-            android:gravity="center"
-            android:typeface="serif"
-            android:textColor="@color/textColor"
-            android:text="Danos un rango aproximado de dinero para que podamos recomendarte sitios que coincidan con esta cantidad y además la preferencia de lugares que tienes"
-            android:textSize="19sp"/>
-
-        <TextView
-            android:id="@+id/tvDinero"
-            android:text="Dinero:"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:textColor="@color/textColor"
-            android:typeface="serif"
-            android:textSize="18sp"/>
-
         <EditText
             android:id="@+id/etDinero"
             android:layout_width="match_parent"
@@ -80,9 +58,10 @@ tools:context="com.example.alfonso.turristea.InformacionFragment">
             android:textSize="18sp"
             android:textStyle="bold"/>
 
+
         <TextView
             android:id="@+id/etTitulo2"
-            android:text="¿Tipo de atractivo turistico?"
+            android:text="¿Tipo de viaje?"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -91,30 +70,8 @@ tools:context="com.example.alfonso.turristea.InformacionFragment">
             android:textStyle="bold"
             android:textSize="18sp"/>
 
-        <TextView
-            android:id="@+id/tvTexto2"
-            android:layout_width="@dimen/center_width"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
-            android:layout_marginLeft="7dp"
-            android:gravity="center"
-            android:typeface="serif"
-            android:textColor="@color/textColor"
-            android:text="Cuentanos que tipo de lugar o actividad quieres realizar y nosotros nos encargamos del resto."
-            android:textSize="19sp"/>
-
-        <TextView
-            android:id="@+id/tvTipoAtractivo"
-            android:text="Atractivo Turístico:"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:textColor="@color/textColor"
-            android:typeface="serif"
-            android:textSize="18sp"/>
-
         <Spinner
-            android:id="@+id/spinner1"
+            android:id="@+id/spinnerTipoViaje"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -123,6 +80,39 @@ tools:context="com.example.alfonso.turristea.InformacionFragment">
             android:typeface="serif"
             android:textSize="18sp"
             android:textStyle="bold"/>
+
+
+        <TextView
+            android:id="@+id/etTitulo2"
+            android:text="Ubicación"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center_horizontal"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+        <Spinner
+            android:id="@+id/spinnerUbicacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:entries="@array/atractivos"
+            android:textColor="@color/textColor"
+            android:typeface="serif"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/btnBuscarFormulario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:background="@color/colorPrimary"
+            android:text="Buscar"
+            android:textColor="@android:color/background_light"
+            android:typeface="serif" />
 
     </LinearLayout>
     </ScrollView>
