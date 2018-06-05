@@ -11,7 +11,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
+
 public class IniciarSesionFragment extends Fragment implements View.OnClickListener {
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -20,11 +31,9 @@ public class IniciarSesionFragment extends Fragment implements View.OnClickListe
 
     private EditText etUsername;
     private EditText etContrasena;
-    private EditText etNombre;
-    private EditText etEdad;
     private Button btnSesionOlvido;
     private Button btnIniciarSesion;
-
+    android.app.FragmentManager fm1;
 
     public IniciarSesionFragment() {
     }
@@ -50,8 +59,6 @@ public class IniciarSesionFragment extends Fragment implements View.OnClickListe
     public void init(View rootView){
         this.etUsername = (EditText) rootView.findViewById(R.id.etUsername);
         this.etContrasena = (EditText) rootView.findViewById(R.id.etContrasena);
-        this.etNombre = (EditText) rootView.findViewById(R.id.etNombre);
-        this.etEdad = (EditText) rootView.findViewById(R.id.etEdad);
         this.btnSesionOlvido = (Button) rootView.findViewById(R.id.btnSesionOlvido);
         this.btnSesionOlvido.setOnClickListener(this);
         this.btnIniciarSesion = (Button) rootView.findViewById(R.id.btnIniciarSesion);
@@ -64,12 +71,42 @@ public class IniciarSesionFragment extends Fragment implements View.OnClickListe
         return inflater.inflate(R.layout.fragment_iniciar_sesion, container, false);
     }
 
+    public void iniciarSesion(){
+        final String REGISTER_URL = "http://192.168.10.101:80/TurristeaPHP/?controller=UsuarioAndroid&action=login";
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("email", this.etUsername.getText().toString());
+        params.put("password", this.etContrasena.getText().toString());
+        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, REGISTER_URL,new JSONObject(params),
+                new com.android.volley.Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        if (response != null) {
+                            Toast.makeText(getActivity(),response.toString() , Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getActivity(), "Error..", Toast.LENGTH_LONG).show();
+                        }//if-else
+                    }//onResponse
+                },
+                new com.android.volley.Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(stringRequest);
+
+    }//iniciarSesion
 
 
     @Override
     public void onClick(View v) {
         if(v.getId()==this.btnIniciarSesion.getId()){
             Toast.makeText(getContext(),"Iniciando sesión", Toast.LENGTH_LONG).show();
+            Fragment fr = new PrincipalFragment();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fr).addToBackStack(null).commit();
+
         }//end if
     }//end onclick
 
