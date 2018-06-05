@@ -10,12 +10,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class ContenidoTuristicoFragment extends Fragment  {
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+
+public class ContenidoTuristicoFragment extends Fragment implements OnMapReadyCallback {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
     private String mParam1;
     private String mParam2;
+    private GoogleMap mMap;
 
 
     public ContenidoTuristicoFragment() {
@@ -41,6 +46,7 @@ public class ContenidoTuristicoFragment extends Fragment  {
     }
 
     public  void init(View rootView){
+     
     }//en init
 
     @Override
@@ -49,5 +55,10 @@ public class ContenidoTuristicoFragment extends Fragment  {
         View rootView = inflater.inflate(R.layout.fragment_contenido_turistico,container,false);
         init(rootView);
         return rootView;
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
     }
 }

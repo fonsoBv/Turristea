@@ -22,4 +22,5 @@
         <item>Familiar</item>
         <item>Negocio</item>
     </string-array>
+    <string name="title_activity_mapa">Map</string>
 </resources>
