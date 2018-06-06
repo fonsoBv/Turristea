@@ -74,7 +74,7 @@ public class IniciarSesionFragment extends Fragment implements View.OnClickListe
     }
 
     public void iniciarSesion(){
-        final String REGISTER_URL = "http://192.168.10.101:80/TurristeaPHP/?controller=UsuarioAndroid&action=login";
+        final String REGISTER_URL = "http://192.168.43.13:80/TurristeaPHP/?controller=Android&action=login";
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("email", this.etUsername.getText().toString());
         params.put("password", this.etContrasena.getText().toString());

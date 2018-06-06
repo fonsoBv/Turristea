@@ -30,7 +30,8 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp">
+            tools:layout_editor_absoluteY="8dp"
+            android:weightSum="1">
 
 
             <ImageView
@@ -42,34 +43,64 @@
                 app:srcCompat="@drawable/logo" />
 
             <TextView
-                android:id="@+id/etTitulo"
+                android:id="@+id/etTituloContenido"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:gravity="center_horizontal"
                 android:text="Monumento Nacional Guayabo"
                 android:textColor="#000"
-                android:textStyle="bold"
-                android:textSize="25sp" />
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tvInfoContenido"
                 android:layout_width="@dimen/center_width"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="35dp"
                 android:layout_marginLeft="7dp"
+                android:layout_marginTop="35dp"
                 android:gravity="center"
-                android:typeface="serif"
-                android:textColor="@color/textColor"
                 android:text="El Monumento Nacional Guayabo fue establecido para proteger y conservar uno de los recursos arqueológicos más importantes del país.\nEl área arqueológica comprende de 15 a 20 hectáreas de las cuales solo se han realizado excavaciones aproximadamente en 4 de ellas, descubriéndose estructuras que revelan un elevado desarrollo arqueológico."
-                android:textSize="20sp" />
+                android:textColor="@color/textColor"
+                android:textSize="20sp"
+                android:typeface="serif" />
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/imgContenido"
                 android:layout_width="@dimen/center_width"
                 android:layout_height="120dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
                 app:srcCompat="@drawable/img2" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/btnAtrasContenido"
+                    android:layout_width="146dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:background="@color/colorPrimary"
+                    android:text="Button"
+                    android:textColor="@android:color/background_light"
+                    android:typeface="serif" />
+
+                <Button
+                    android:id="@+id/btnSiguienteContenido"
+                    android:layout_width="136dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="4"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:layout_row="0"
+                    android:background="@color/colorPrimary"
+                    android:text="Button"
+                    android:textColor="@android:color/background_light"
+                    android:typeface="serif" />
+            </GridLayout>
 
         </LinearLayout>
         </ScrollView>
