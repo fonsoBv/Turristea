@@ -168,7 +168,8 @@ public class ContenidoTuristicoFragment extends Fragment implements OnMapReadyCa
                                     sitios.add(new Sitio(jsonArray.getJSONObject(i).getString("precio"),jsonArray.getJSONObject(i).getString("ubicacion"),
                                             jsonArray.getJSONObject(i).getString("tipo_viaje"), descripcion,
                                            titulo,Double.parseDouble(jsonArray.getJSONObject(i).getString("latitud")),
-                                            Double.parseDouble(jsonArray.getJSONObject(i).getString("longitud")),jsonArray.getJSONObject(i).getString("imagen")));
+                                            Double.parseDouble(jsonArray.getJSONObject(i).getString("longitud")),jsonArray.getJSONObject(i).getString("imagen"),
+                                            urlDecoder.decode( jsonArray.getJSONObject(i).getString("video"),"UTF-8")));
                                 }//end for
                                 contador = sitios.size()-1;
                                 System.out.println(jsonArray.toString());
@@ -293,6 +294,12 @@ public class ContenidoTuristicoFragment extends Fragment implements OnMapReadyCa
                 markerOptions[0] = new MarkerOptions().title("Esta es nuestra ubicación").position(ubicacion);
                 mGoogleMap.addMarker(markerOptions[0]);
                 mGoogleMap.addMarker(markerOptions[1]);
+
+                Uri uri = Uri.parse(this.sitios.get(contador).getVideo());
+                this.videoView.setMediaController(new MediaController(getContext()));
+                this.videoView.setVideoURI(uri);
+                this.videoView.requestFocus();
+                this.videoView.start();
             }else {
                 Toast.makeText(getContext(), "Este es el primer sitio", Toast.LENGTH_LONG).show();
             }
@@ -308,6 +315,12 @@ public class ContenidoTuristicoFragment extends Fragment implements OnMapReadyCa
                 markerOptions[0] = new MarkerOptions().title("Esta es nuestra ubicación").position(ubicacion);
                 mGoogleMap.addMarker(markerOptions[0]);
                 mGoogleMap.addMarker(markerOptions[1]);
+
+                Uri uri = Uri.parse(this.sitios.get(contador).getVideo());
+                this.videoView.setMediaController(new MediaController(getContext()));
+                this.videoView.setVideoURI(uri);
+                this.videoView.requestFocus();
+                this.videoView.start();
             }else{
                 Toast.makeText(getContext(),"Este es el ultimo sitio",Toast.LENGTH_LONG).show();
             }

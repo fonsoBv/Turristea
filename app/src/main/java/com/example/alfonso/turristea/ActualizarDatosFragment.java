@@ -16,6 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -65,7 +66,7 @@ public class ActualizarDatosFragment extends Fragment implements View.OnClickLis
 
 
     private void UpdateUser() {
-        final String REGISTER_URL = "http://192.168.10.101:80/TurristeaPHP/?controller=Android&action=actualizar";
+        final String REGISTER_URL = "http://192.168.10.101:80/TurristeaPHP/?controller=Android&action=actualizarDatos";
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("email", this.etUsername.getText().toString());
         params.put("nombre", this.etNombre.getText().toString());
@@ -77,7 +78,16 @@ public class ActualizarDatosFragment extends Fragment implements View.OnClickLis
                     @Override
                     public void onResponse(JSONObject response) {
                         if (response != null) {
-                            Toast.makeText(getActivity(),response.toString() , Toast.LENGTH_LONG).show();
+                            try {
+                                int valor = Integer.parseInt(response.getJSONArray("resultado").toString());
+                                if(valor==1)
+                                    Toast.makeText(getActivity(),"Actualizado", Toast.LENGTH_LONG).show();
+                                else
+                                    Toast.makeText(getActivity(),"Error", Toast.LENGTH_LONG).show();
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         } else {
                             Toast.makeText(getActivity(), "Error..", Toast.LENGTH_LONG).show();
                         }//if-else
@@ -106,7 +116,7 @@ public class ActualizarDatosFragment extends Fragment implements View.OnClickLis
     @Override
     public void onClick(View v) {
         if(v.getId()==this.btnActualizar.getId()){
-            Toast.makeText(getContext(),"Datos actualizados", Toast.LENGTH_LONG).show();
+            UpdateUser();
         }//end if
     }//end onclick
 }

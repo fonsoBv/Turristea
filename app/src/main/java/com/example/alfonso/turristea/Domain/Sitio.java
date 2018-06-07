@@ -11,14 +11,16 @@ public class Sitio {
     private String descripcion;
     private String titulo;
     private String imagen;
+    private String video;
     private double latitud;
     private double longitud;
 
 
 
     public Sitio(String precio, String ubicacion, String tipo_de_viaje, String descripcion, String titulo,
-                 double latitud, double longitud,String imagen) {
+                 double latitud, double longitud,String imagen,String video) {
         this.precio = precio;
+        this.video = video;
         this.imagen = imagen;
         this.ubicacion = ubicacion;
         this.tipo_de_viaje = tipo_de_viaje;
@@ -92,5 +94,13 @@ public class Sitio {
 
     public void setLongitud(double longitud) {
         this.longitud = longitud;
+    }
+
+    public String getVideo() {
+        return video;
+    }
+
+    public void setVideo(String video) {
+        this.video = video;
     }
 }
