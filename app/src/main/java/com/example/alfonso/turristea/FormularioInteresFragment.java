@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -72,7 +73,7 @@ public class FormularioInteresFragment  extends Fragment  implements View.OnClic
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_iniciar_sesion,container,false);
+        View rootView = inflater.inflate(R.layout.fragment_formulario_interes,container,false);
         init(rootView);
         return rootView;
     }//onCreateView
@@ -80,55 +81,53 @@ public class FormularioInteresFragment  extends Fragment  implements View.OnClic
     public void init(View root){
         this.etDinero = (EditText) root.findViewById(R.id.etDinero);
         this.etTipoViaje = (Spinner) root.findViewById(R.id.spinnerTipoViaje);
+        ArrayAdapter spinner_adapter = ArrayAdapter.createFromResource(getContext(), R.array.tipoviajearray,android.R.layout.simple_spinner_item);
+        spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        this.etTipoViaje.setAdapter(spinner_adapter);
         this.etUbicacion = (Spinner) root.findViewById(R.id.spinnerUbicacion);
+        ArrayAdapter spinner_adapter2 = ArrayAdapter.createFromResource(getContext(), R.array.ubicacionarray,android.R.layout.simple_spinner_item);
+        spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        this.etUbicacion.setAdapter(spinner_adapter2);
         this.btnbuscar = (Button) root.findViewById(R.id.btnBuscarFormulario);
         this.btnbuscar.setOnClickListener(this);
     }//end init
 
     public void buscar(){
-        final String REGISTER_URL = "http://192.168.10.101:80/TurristeaPHP/?controller=UsuarioAndroid&action=login";
-        HashMap<String, String> params = new HashMap<String, String>();
         String TipoViaje = (String) etTipoViaje.getSelectedItem();
         String  ubicacion = (String) etUbicacion.getSelectedItem();
-        params.put("dinero", this.etDinero.getText().toString());
-        params.put("tipoViaje", TipoViaje);
-        params.put("ubicacion", ubicacion);
-        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, REGISTER_URL,new JSONObject(params),
-                new com.android.volley.Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        if (response != null) {
-                            Toast.makeText(getActivity(),"Iniciando...", Toast.LENGTH_LONG).show();
-                            try {
-                                JSONObject obj1 = response;
-                                JSONArray result = obj1.getJSONArray("resultado");
-
-                            Fragment fr = new ContenidoTuristicoFragment();
-                            Bundle args = new Bundle();
-                            args.putSerializable("resultado",(Serializable) result);
-                            args.putString("email", response.toString());
-                            fr.setArguments(args);
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fr).addToBackStack(null).commit();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            Toast.makeText(getActivity(), "Error..", Toast.LENGTH_LONG).show();
-                        }//if-else
-                    }//onResponse
-                },
-                new com.android.volley.Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
-                    }
-                }) {
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        requestQueue.add(stringRequest);
-
+        float dinero = Float.parseFloat(this.etDinero.getText().toString());
+        Fragment fr = new ContenidoTuristicoFragment();
+        Bundle args = new Bundle();
+        args.putString("tipoviaje",TipoViaje);
+        args.putString("ubicacion", ubicacion);
+        args.putString("dinero", precioPrueba(dinero));
+        fr.setArguments(args);
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fr).addToBackStack(null).commit();
     }//end buscar
+
+    public String precioPrueba(float precio){
+        if(precio>0 && precio<=1000){
+            return "100-1000";
+        }else if(precio>=1001 && precio<=5000){
+            return "1001-5000";
+        }else if(precio>=5001 && precio<=10000){
+            return "5001-10000";
+        }
+        return "0-1000";
+    }
+
+    public String precio(float precio){
+    if(precio>0 && precio<=1000){
+        return "0-1000";
+    }else if(precio>=1001 && precio<=5000){
+        return "1001-5000";
+    }else if(precio>=5001 && precio<=10000){
+        return "5001-10000";
+    }else if(precio>=10001 && precio<=20000){
+        return "10001-20000";
+    }
+    return "0-1000";
+}
 
     @Override
     public void onClick(View v) {

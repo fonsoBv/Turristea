@@ -3,7 +3,11 @@ package com.example.alfonso.turristea;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,7 +78,7 @@ public class IniciarSesionFragment extends Fragment implements View.OnClickListe
     }
 
     public void iniciarSesion(){
-        final String REGISTER_URL = "http://192.168.43.13:80/TurristeaPHP/?controller=Android&action=login";
+        final String REGISTER_URL = "http://192.168.10.101:80/TurristeaPHP/?controller=Android&action=login";
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("email", this.etUsername.getText().toString());
         params.put("password", this.etContrasena.getText().toString());
@@ -85,6 +89,8 @@ public class IniciarSesionFragment extends Fragment implements View.OnClickListe
                         if (response != null) {
                             Toast.makeText(getActivity(),"Iniciando..." , Toast.LENGTH_LONG).show();
                             Fragment fr = new PrincipalFragment();
+                           Turristea.navigationView.getMenu().setGroupVisible(R.id.usuario, true);
+                            Turristea.navigationView.getMenu().setGroupVisible(R.id.cuenta,false);
                             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,fr).addToBackStack(null).commit();
                         } else {
                             Toast.makeText(getActivity(), "Error..", Toast.LENGTH_LONG).show();

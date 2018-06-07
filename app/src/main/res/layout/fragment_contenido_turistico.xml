@@ -33,15 +33,6 @@
             tools:layout_editor_absoluteY="8dp"
             android:weightSum="1">
 
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="@dimen/center_width"
-                android:layout_height="110dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="10dp"
-                app:srcCompat="@drawable/logo" />
-
             <TextView
                 android:id="@+id/etTituloContenido"
                 android:layout_width="match_parent"
@@ -73,31 +64,47 @@
                 android:layout_marginTop="20dp"
                 app:srcCompat="@drawable/img2" />
 
+            <VideoView
+                android:id="@+id/Video"
+                android:layout_width="320dp"
+                android:layout_height="250dp"
+                android:layout_marginLeft="23dp"
+                android:layout_marginTop="20dp"
+                />
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/map"
+                android:layout_width="320dp"
+                android:layout_height="250dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp" />
+
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <Button
                     android:id="@+id/btnAtrasContenido"
-                    android:layout_width="146dp"
+                    android:layout_width="131dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="30dp"
                     android:background="@color/colorPrimary"
-                    android:text="Button"
+                    android:text="Anterior"
                     android:textColor="@android:color/background_light"
                     android:typeface="serif" />
 
                 <Button
                     android:id="@+id/btnSiguienteContenido"
-                    android:layout_width="136dp"
+                    android:layout_width="131dp"
                     android:layout_height="wrap_content"
-                    android:layout_column="4"
+                    android:layout_column="3"
                     android:layout_gravity="center"
+                    android:layout_marginLeft="80dp"
                     android:layout_marginTop="30dp"
                     android:layout_row="0"
                     android:background="@color/colorPrimary"
-                    android:text="Button"
+                    android:text="Siguiente"
                     android:textColor="@android:color/background_light"
                     android:typeface="serif" />
             </GridLayout>

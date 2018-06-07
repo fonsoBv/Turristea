@@ -11,12 +11,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import java.io.StringBufferInputStream;
+
 public class Turristea extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
 
     DrawerLayout drawer;
-
+    public static NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,8 +34,12 @@ public class Turristea extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        Fragment f = new PrincipalFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("nav",navigationView.toString());
+        bundle.putSerializable("too",toolbar.toString());
+        Fragment f = new IniciarSesionFragment();
+        f.setArguments(bundle);
+        Turristea.navigationView = navigationView;
         getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,f).commit();
     }
 
@@ -73,24 +79,16 @@ public class Turristea extends AppCompatActivity
         } else if (id == R.id.nav_sesion) {
             f = new IniciarSesionFragment();
             fragmenTransaction = true;
-        } else if (id == R.id.nav_actualizar_datos){
-            f = new ActualizarDatosFragment();
-            fragmenTransaction = true;
-        }else if (id == R.id.nav_form_interes) {
+        } else if (id == R.id.nav_form_interes) {
             f = new FormularioInteresFragment();
-            fragmenTransaction = true;
-        }else if (id == R.id.nav_ver_perfil) {
-            f = new VerPerfilFragment();
-            fragmenTransaction = true;
-        }else if (id == R.id.nav_presupuesto) {
-            f = new PresupuestoFragment();
-            fragmenTransaction = true;
-        }else if (id == R.id.nav_crear_perfil) {
-            f = new CrearPerfilFragment();
             fragmenTransaction = true;
         }else if (id == R.id.nav_favoritos) {
             f = new FavoritosFragment();
             fragmenTransaction = true;
+        }else if(id==R.id.cerrar_sesion){
+            NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+            navigationView.getMenu().setGroupVisible(R.id.usuario, false);
+            navigationView.getMenu().setGroupVisible(R.id.cuenta,true);
         }
 
         if(fragmenTransaction){

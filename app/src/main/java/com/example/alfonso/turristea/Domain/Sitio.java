@@ -5,19 +5,19 @@ package com.example.alfonso.turristea.Domain;
  */
 
 public class Sitio {
-    private float precio;
+    private String precio;
     private String ubicacion;
     private String tipo_de_viaje;
     private String descripcion;
     private String titulo;
     private String imagen;
-    private float latitud;
-    private float longitud;
+    private double latitud;
+    private double longitud;
 
 
 
-    public Sitio(float precio, String ubicacion, String tipo_de_viaje, String descripcion, String titulo,
-                 float latitud, float longitud,String imagen) {
+    public Sitio(String precio, String ubicacion, String tipo_de_viaje, String descripcion, String titulo,
+                 double latitud, double longitud,String imagen) {
         this.precio = precio;
         this.imagen = imagen;
         this.ubicacion = ubicacion;
@@ -28,7 +28,7 @@ public class Sitio {
         this.longitud = longitud;
     }
 
-    public float getPrecio() {
+    public String getPrecio() {
         return precio;
     }
 
@@ -38,7 +38,7 @@ public class Sitio {
     }
 
 
-    public void setPrecio(float precio) {
+    public void setPrecio(String precio) {
         this.precio = precio;
     }
 
@@ -78,19 +78,19 @@ public class Sitio {
         this.titulo = titulo;
     }
 
-    public float getLatitud() {
+    public double getLatitud() {
         return latitud;
     }
 
-    public void setLatitud(float latitud) {
+    public void setLatitud(double latitud) {
         this.latitud = latitud;
     }
 
-    public float getLongitud() {
+    public double getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(float longitud) {
+    public void setLongitud(double longitud) {
         this.longitud = longitud;
     }
 }

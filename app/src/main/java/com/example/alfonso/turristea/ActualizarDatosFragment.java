@@ -10,6 +10,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
+
 public class ActualizarDatosFragment extends Fragment implements View.OnClickListener {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -52,6 +62,38 @@ public class ActualizarDatosFragment extends Fragment implements View.OnClickLis
         this.btnActualizar = (Button) rootView.findViewById(R.id.btnActualizar);
         this.btnActualizar.setOnClickListener(this);
     }//en init
+
+
+    private void UpdateUser() {
+        final String REGISTER_URL = "http://192.168.10.101:80/TurristeaPHP/?controller=Android&action=actualizar";
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("email", this.etUsername.getText().toString());
+        params.put("nombre", this.etNombre.getText().toString());
+        params.put("password", this.etContrasena.getText().toString());
+        params.put("edad", this.etEdad.getText().toString());
+
+        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, REGISTER_URL,new JSONObject(params),
+                new com.android.volley.Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        if (response != null) {
+                            Toast.makeText(getActivity(),response.toString() , Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getActivity(), "Error..", Toast.LENGTH_LONG).show();
+                        }//if-else
+                    }//onResponse
+                },
+                new com.android.volley.Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(stringRequest);
+    }//RegisterUser
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
