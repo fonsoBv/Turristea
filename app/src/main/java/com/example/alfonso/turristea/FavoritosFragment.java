@@ -63,7 +63,7 @@ public class FavoritosFragment extends Fragment implements View.OnClickListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_favoritos, container, false);
-    }
+    }//onCreateView
 
     @Override
     public void onClick(View v) {
@@ -72,4 +72,4 @@ public class FavoritosFragment extends Fragment implements View.OnClickListener 
         }//end if
     }//end onclick
 
-}
+}//end class

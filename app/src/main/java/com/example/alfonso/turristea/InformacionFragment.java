@@ -27,7 +27,7 @@ public class InformacionFragment extends Fragment {
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
-    }
+    }//InformacionFragment
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,11 +36,11 @@ public class InformacionFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-    }
+    }//onCreate
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_informacion, container, false);
-    }
-}
+    }//onCreateView
+}//end class

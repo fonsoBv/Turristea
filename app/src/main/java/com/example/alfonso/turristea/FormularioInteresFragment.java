@@ -43,7 +43,7 @@ public class FormularioInteresFragment  extends Fragment  implements View.OnClic
 
     public FormularioInteresFragment() {
 
-    }
+    }//constructor
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -98,6 +98,7 @@ public class FormularioInteresFragment  extends Fragment  implements View.OnClic
         float dinero = Float.parseFloat(this.etDinero.getText().toString());
         Fragment fr = new ContenidoTuristicoFragment();
         Bundle args = new Bundle();
+        //enviamos las variables del formulario al contenido turistico para hacer el calculo de euclides
         args.putString("tipoviaje",TipoViaje);
         args.putString("ubicacion", ubicacion);
         args.putString("dinero", precioPrueba(dinero));
@@ -110,31 +111,19 @@ public class FormularioInteresFragment  extends Fragment  implements View.OnClic
             return "100-1000";
         }else if(precio>=1001 && precio<=5000){
             return "1001-5000";
-        }else if(precio>=5001 && precio<=10000){
-            return "5001-10000";
         }
-        return "0-1000";
-    }
+            return "5001-15000";
+    }//metodo para cdefinir el rango del precio
 
-    public String precio(float precio){
-    if(precio>0 && precio<=1000){
-        return "0-1000";
-    }else if(precio>=1001 && precio<=5000){
-        return "1001-5000";
-    }else if(precio>=5001 && precio<=10000){
-        return "5001-10000";
-    }else if(precio>=10001 && precio<=20000){
-        return "10001-20000";
-    }
-    return "0-1000";
-}
 
     @Override
     public void onClick(View v) {
         if(v.getId()==this.btnbuscar.getId()){
             if(etDinero.getText().toString().length()>0) {
                 buscar();
-            }//end if
+            }else{
+                Toast.makeText(getContext(),"Complete todos los datos",Toast.LENGTH_LONG).show();;
+            }
         }//end if
     }//onCLIck
-}
+}//end class

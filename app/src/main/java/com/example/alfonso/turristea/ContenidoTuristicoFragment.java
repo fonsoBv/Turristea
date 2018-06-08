@@ -97,7 +97,7 @@ public class ContenidoTuristicoFragment extends Fragment implements OnMapReadyCa
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
-    }
+    }//ContenidoTuristicoFragment
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -110,7 +110,7 @@ public class ContenidoTuristicoFragment extends Fragment implements OnMapReadyCa
         if (ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(getActivity(), new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION,}, 1000);
         } else {
-            locationStart();
+            //locationStart();
         }//Fin del if.
     }//Fin del onCreate.
 
@@ -124,44 +124,42 @@ public class ContenidoTuristicoFragment extends Fragment implements OnMapReadyCa
         }
         this.locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, (LocationListener) localizacion);
         this.locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, (LocationListener) localizacion);
-    }//Fin del método locationStart
+    }//Fin del método locationStart el cual se encarcar de localozar nuestra ubicaccion
 
     public void setLocation(Location loc) {
         if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
-            try {
-                Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
-                List<Address> list = geocoder.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
-                if (!list.isEmpty()) {
-                    Address DirCalle = list.get(0);
-                    LatLng ubicacion = new LatLng(this.location.getLatitude(), this.location.getLongitude());
-                    if(this.markerOptions[1] == null) {
-                        this.markerOptions[1] = new MarkerOptions().title("Tu ubicación es " + DirCalle.getAddressLine(0)).position(ubicacion);
-                        mGoogleMap.addMarker(markerOptions[1]);
-                    }
-                }//Fin del if.
-            } catch (IOException e) {
-                e.printStackTrace();
-            }//Fin del try-catch.
+            LatLng ubicacion = new LatLng(9.902685, -83.671778);
+            if(this.markerOptions[1] == null) {
+                this.markerOptions[1] = new MarkerOptions().title("Tu ubicación").position(ubicacion);
+                mGoogleMap.addMarker(markerOptions[1]);
+            }
         }//Fin del if.
     }//Fin del método setLocation.
 
     public void obtenerSitios(){
         final String REGISTER_URL;
+        //si entro diferectamente a contenido muestre todos los que hay y de lo contratrio es porq los datos vienen del sitio de interes
+        //Aclaracion si cae en el esle consulta a euclides esto significa que viene del formulario de intereses
         if(bandera){
-            REGISTER_URL = "http://192.168.10.101:80/TurristeaPHP/?controller=Android&action=obtenerSitios";
+            REGISTER_URL = "http://alonsovargasp.hol.es/?controller=Android&action=obtenerSitios";
         }else {
-            REGISTER_URL = "http://192.168.10.101:80/TurristeaPHP/?controller=Android&action=obtenerRecomendaciones" +
+            REGISTER_URL = "http://alonsovargasp.hol.es/?controller=Android&action=obtenerRecomendaciones" +
                     "&precio=" + this.dinero + "&tipo_viaje=" + this.tipoviaje + "&ubicacion=" + this.ubicacion;
-        }
+        }//end if-else
+
+        //se hace un json request y se establecen los parametros necesarios
         JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.GET, REGISTER_URL,new JSONObject(),
                 new com.android.volley.Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         if (response != null) {
-                            Toast.makeText(getContext(),response.toString(),Toast.LENGTH_LONG).show();
                             try {
+
+                                //aca resivimos la respuesta json y convertimos este en un JSON array coon una cabezera sitios de identificador para el array
                                 JSONArray jsonArray = response.getJSONArray("sitios");
+                                //instacionamos el url decoder para decodificar los datos utf-8 con las tildes y caracteres extraños
                                 URLDecoder urlDecoder = new URLDecoder();
+                                //recorremos el array y vamos rellenando el un arraylist de obetos sitios para ir mostrandolo
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                     String titulo =  urlDecoder.decode(jsonArray.getJSONObject(i).get("titulo").toString(),"UTF-8");
                                     String descripcion = urlDecoder.decode(jsonArray.getJSONObject(i).get("descripcion").toString(),"UTF-8");
@@ -171,8 +169,9 @@ public class ContenidoTuristicoFragment extends Fragment implements OnMapReadyCa
                                             Double.parseDouble(jsonArray.getJSONObject(i).getString("longitud")),jsonArray.getJSONObject(i).getString("imagen"),
                                             urlDecoder.decode( jsonArray.getJSONObject(i).getString("video"),"UTF-8")));
                                 }//end for
+
+                                //este contador se define aqui pero se usa ir pasando sitio por sitio en el onclick listener
                                 contador = sitios.size()-1;
-                                System.out.println(jsonArray.toString());
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             } catch (UnsupportedEncodingException e) {
@@ -192,7 +191,7 @@ public class ContenidoTuristicoFragment extends Fragment implements OnMapReadyCa
         };
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
-    }
+    }//metodo para enviar por medio de volley este metodo hace una peticion post y manda los datos en formato json
 
     private void cargarWebServiceImagen(String urlImagen) {
         urlImagen=urlImagen.replace(" ","%20");
@@ -206,12 +205,11 @@ public class ContenidoTuristicoFragment extends Fragment implements OnMapReadyCa
         }, 0, 0, ImageView.ScaleType.CENTER, null, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(),"Error al cargar la imagen",Toast.LENGTH_SHORT).show();
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(imageRequest);
-    }
+    }//este metodo nos carga un textview con la imagen se trae la url de la imagen de la base y realiza un imagereques
 
     public  void init(View rootView) {
         this.tvTituloContenido = (TextView) rootView.findViewById(R.id.etTituloContenido);
@@ -230,19 +228,15 @@ public class ContenidoTuristicoFragment extends Fragment implements OnMapReadyCa
         this.videoView.requestFocus();
         this.videoView.start();
         this.markerOptions = new MarkerOptions[2];
-    }//en init
+    }//en init incializa compoentes
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_contenido_turistico, container, false);
         init(mView);
-
-//        this.tvInfo.setText(this.sitios.get(this.contador).getDescripcion());
-  //      this.tvTituloContenido.setText(this.sitios.get(this.contador).getTitulo());
-  //      cargarWebServiceImagen(this.sitios.get(this.contador).getImagen());
         return mView;
-    }
+    }//onCreateView
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -255,7 +249,7 @@ public class ContenidoTuristicoFragment extends Fragment implements OnMapReadyCa
             mMapView.onResume();
             mMapView.getMapAsync(this);
         }
-    }
+    }//OncreatedView
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -275,10 +269,13 @@ public class ContenidoTuristicoFragment extends Fragment implements OnMapReadyCa
         mGoogleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         mGoogleMap.getUiSettings().setZoomControlsEnabled(true);
         LatLng ubicacion = new LatLng(9.970865, -83.690761);
+        LatLng ubicacionActual = new LatLng(9.902685, -83.671778);
         mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 9));
         markerOptions[0] = new MarkerOptions().title("Esta es nuestra ubicación").position(ubicacion);
+        markerOptions[1] = new MarkerOptions().title("Tu ubicación").position(ubicacionActual);
         mGoogleMap.addMarker(markerOptions[0]);
-    }
+        mGoogleMap.addMarker(markerOptions[1]);
+    }//onMapReady
 
     @Override
     public void onClick(View v) {
@@ -294,7 +291,6 @@ public class ContenidoTuristicoFragment extends Fragment implements OnMapReadyCa
                 markerOptions[0] = new MarkerOptions().title("Esta es nuestra ubicación").position(ubicacion);
                 mGoogleMap.addMarker(markerOptions[0]);
                 mGoogleMap.addMarker(markerOptions[1]);
-
                 Uri uri = Uri.parse(this.sitios.get(contador).getVideo());
                 this.videoView.setMediaController(new MediaController(getContext()));
                 this.videoView.setVideoURI(uri);
@@ -302,7 +298,7 @@ public class ContenidoTuristicoFragment extends Fragment implements OnMapReadyCa
                 this.videoView.start();
             }else {
                 Toast.makeText(getContext(), "Este es el primer sitio", Toast.LENGTH_LONG).show();
-            }
+            }//else-if
         }else if(v.getId()==this.btnatras.getId()){
             if(this.contador<this.sitios.size()-1){
                 this.contador++;
@@ -323,7 +319,7 @@ public class ContenidoTuristicoFragment extends Fragment implements OnMapReadyCa
                 this.videoView.start();
             }else{
                 Toast.makeText(getContext(),"Este es el ultimo sitio",Toast.LENGTH_LONG).show();
-            }
-        }
-    }
-}
+            }//else-if
+        }//else-if
+    }//end Onclick
+}//end class

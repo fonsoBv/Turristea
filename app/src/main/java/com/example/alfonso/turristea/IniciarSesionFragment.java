@@ -48,7 +48,7 @@ public class IniciarSesionFragment extends Fragment implements View.OnClickListe
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
-    }
+    }//IniciarSesionFragment
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,7 +57,7 @@ public class IniciarSesionFragment extends Fragment implements View.OnClickListe
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-    }
+    }//onCreate
 
     public void init(View rootView){
         this.etUsername = (EditText) rootView.findViewById(R.id.etUsername);
@@ -75,13 +75,18 @@ public class IniciarSesionFragment extends Fragment implements View.OnClickListe
         View rootView = inflater.inflate(R.layout.fragment_iniciar_sesion,container,false);
         init(rootView);
         return rootView;
-    }
+    }//onCreateView
 
     public void iniciarSesion(){
-        final String REGISTER_URL = "http://192.168.10.101:80/TurristeaPHP/?controller=Android&action=login";
+        //url para iniciar sesion
+        final String REGISTER_URL = "http://alonsovargasp.hol.es/?controller=Android&action=login";
+
+        //definicimos las variables
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("email", this.etUsername.getText().toString());
         params.put("password", this.etContrasena.getText().toString());
+
+        //Instanciamos el jsonRequest y establecemos sus parametros
         JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, REGISTER_URL,new JSONObject(params),
                 new com.android.volley.Response.Listener<JSONObject>() {
                     @Override
@@ -118,7 +123,7 @@ public class IniciarSesionFragment extends Fragment implements View.OnClickListe
                 iniciarSesion();
             }else{
                 Toast.makeText(getContext(),"LLene todos los campos de textos",Toast.LENGTH_LONG);
-            }
+            }//end else-if
         }//end if
     }//end onclick
 

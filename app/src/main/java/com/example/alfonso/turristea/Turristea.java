@@ -52,7 +52,7 @@ public class Turristea extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
-    }
+    }//onBackPressed()
 
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -99,5 +99,5 @@ public class Turristea extends AppCompatActivity
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-}
+    }//metodo para saber que opcion del navigation drawer es seleccionada
+}//end class

@@ -35,7 +35,7 @@ public class ActualizarDatosFragment extends Fragment implements View.OnClickLis
     private Button btnActualizar;
 
     public ActualizarDatosFragment() {
-    }
+    }//constructor
 
     public static ActualizarDatosFragment newInstance(String param1, String param2) {
         ActualizarDatosFragment fragment = new ActualizarDatosFragment();
@@ -44,7 +44,7 @@ public class ActualizarDatosFragment extends Fragment implements View.OnClickLis
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
-    }
+    }//end actualizar datos
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class ActualizarDatosFragment extends Fragment implements View.OnClickLis
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-    }
+    }//onCreate
 
     public void init(View rootView){
         this.etUsername = (EditText) rootView.findViewById(R.id.etUsername);
@@ -66,13 +66,15 @@ public class ActualizarDatosFragment extends Fragment implements View.OnClickLis
 
 
     private void UpdateUser() {
-        final String REGISTER_URL = "http://192.168.10.101:80/TurristeaPHP/?controller=Android&action=actualizarDatos";
+        final String REGISTER_URL = "http://alonsovargasp.hol.es/?controller=Android&action=actualizarDatos";
         HashMap<String, String> params = new HashMap<String, String>();
+        //datos a enviar
         params.put("email", this.etUsername.getText().toString());
         params.put("nombre", this.etNombre.getText().toString());
         params.put("password", this.etContrasena.getText().toString());
         params.put("edad", this.etEdad.getText().toString());
 
+        //se hace un json request y se establecen los parametros necesarios
         JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, REGISTER_URL,new JSONObject(params),
                 new com.android.volley.Response.Listener<JSONObject>() {
                     @Override
@@ -102,7 +104,7 @@ public class ActualizarDatosFragment extends Fragment implements View.OnClickLis
         };
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
-    }//RegisterUser
+    }//RegisterUser metodo para enviar por medio de volley este metodo hace una peticion post y manda los datos en formato json
 
 
     @Override
@@ -111,7 +113,7 @@ public class ActualizarDatosFragment extends Fragment implements View.OnClickLis
         View rootView = inflater.inflate(R.layout.fragment_actualizar_datos,container,false);
         init(rootView);
         return rootView;
-    }
+    }//onCreateView
 
     @Override
     public void onClick(View v) {
@@ -119,4 +121,4 @@ public class ActualizarDatosFragment extends Fragment implements View.OnClickLis
             UpdateUser();
         }//end if
     }//end onclick
-}
+}//end class

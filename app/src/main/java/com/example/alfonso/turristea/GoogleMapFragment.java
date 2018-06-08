@@ -22,7 +22,7 @@ public class GoogleMapFragment extends FragmentActivity implements OnMapReadyCal
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-    }
+    }//onCreate
 
 
     /**
@@ -42,5 +42,5 @@ public class GoogleMapFragment extends FragmentActivity implements OnMapReadyCal
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-    }
+    }//onMapReady
 }

@@ -22,7 +22,7 @@ public class OpinionFragment extends Fragment implements View.OnClickListener {
     private Button btnEnviar;
 
     public OpinionFragment() {
-    }
+    }//OpinionFragement
 
     public static OpinionFragment newInstance(String param1, String param2) {
         OpinionFragment fragment = new OpinionFragment();
@@ -31,7 +31,7 @@ public class OpinionFragment extends Fragment implements View.OnClickListener {
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
-    }
+    }// OpinionFragment
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class OpinionFragment extends Fragment implements View.OnClickListener {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-    }
+    }//onCreate
 
     public void init(View rootView){
         this.btnEnviar = (Button) rootView.findViewById(R.id.btnEnviar);
@@ -51,7 +51,7 @@ public class OpinionFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_opinion, container, false);
-    }
+    }//onCreateView
 
     @Override
     public void onClick(View v) {
@@ -60,4 +60,4 @@ public class OpinionFragment extends Fragment implements View.OnClickListener {
         }//end if
     }//end onclick
 
-}
+}//end class

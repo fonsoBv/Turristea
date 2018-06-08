@@ -25,7 +25,7 @@ public class CrearPerfilFragment extends Fragment implements View.OnClickListene
     private Button btnActualizar;
 
     public CrearPerfilFragment() {
-    }
+    }//constructor
 
     public CrearPerfilFragment newInstance(String param1, String param2) {
         CrearPerfilFragment fragment = new CrearPerfilFragment();
@@ -34,7 +34,7 @@ public class CrearPerfilFragment extends Fragment implements View.OnClickListene
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
-    }
+    }//CrearPerfilFragment
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class CrearPerfilFragment extends Fragment implements View.OnClickListene
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-    }
+    }//onCreate
 
     public  void init(View rootView){
         this.etNombre = (EditText) rootView.findViewById(R.id.etNombre);
@@ -65,4 +65,4 @@ public class CrearPerfilFragment extends Fragment implements View.OnClickListene
         }//end if
     }//end onclick
 
-}
+}//end class

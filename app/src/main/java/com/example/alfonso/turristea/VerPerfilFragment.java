@@ -17,7 +17,7 @@ public class VerPerfilFragment extends Fragment {
 
     public VerPerfilFragment() {
 
-    }
+    }//constructor
 
     public VerPerfilFragment newInstance(String param1, String param2) {
         VerPerfilFragment fragment = new VerPerfilFragment();
@@ -26,7 +26,7 @@ public class VerPerfilFragment extends Fragment {
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
-    }
+    }//VerPerfilFragment
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,11 +35,11 @@ public class VerPerfilFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-    }
+    }//onCreate
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_ver_perfil, container, false);
-    }
-}
+    }//onCreateView
+}//end class

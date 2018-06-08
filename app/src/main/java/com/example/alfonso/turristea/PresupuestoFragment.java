@@ -33,7 +33,7 @@ public class PresupuestoFragment extends Fragment implements View.OnClickListene
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
-    }
+    }//PresupuestoFragement
 
     public  void init(View rootView){
         this.etNumPersonas = (EditText) rootView.findViewById(R.id.etNumPersonas);
@@ -49,17 +49,17 @@ public class PresupuestoFragment extends Fragment implements View.OnClickListene
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-    }
+    }//Oncreate
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_presupuesto, container, false);
-    }
+    }//onCreateView
 
     public void onClick(View v) {
         if(v.getId()==this.btnCalcular.getId()){
             Toast.makeText(getContext(),"Calculando", Toast.LENGTH_LONG).show();
         }//end if
     }//end onclick
-}
+}//end class

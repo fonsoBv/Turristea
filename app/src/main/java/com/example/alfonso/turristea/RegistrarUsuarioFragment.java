@@ -51,7 +51,7 @@ public class RegistrarUsuarioFragment extends Fragment implements View.OnClickLi
     private Button btnRegistrarUsuario;
 
     public RegistrarUsuarioFragment() {
-    }
+    }//RegistrarUsuarioFragment
 
     public static RegistrarUsuarioFragment newInstance(String param1, String param2) {
         RegistrarUsuarioFragment fragment = new RegistrarUsuarioFragment();
@@ -60,7 +60,7 @@ public class RegistrarUsuarioFragment extends Fragment implements View.OnClickLi
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
-    }
+    }//RegistrarUsuarioFragment
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,7 +69,7 @@ public class RegistrarUsuarioFragment extends Fragment implements View.OnClickLi
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-    }
+    }//onCreate
 
     public  void init(View rootView){
         this.etRegistrarConfirmarContrasenia = (EditText) rootView.findViewById(R.id.etRegistrarConfirmarContraseña);
@@ -91,25 +91,32 @@ public class RegistrarUsuarioFragment extends Fragment implements View.OnClickLi
         View rootView = inflater.inflate(R.layout.fragment_registrar_usuario,container,false);
         init(rootView);
         return rootView;
-    }
+    }//onCreateView
 
     private void RegisterUser() {
-        final String REGISTER_URL = "http://192.168.10.101:80/TurristeaPHP/?controller=UsuarioAndroid&action=registrarse";
+        //url para registarse
+        final String REGISTER_URL = "http://alonsovargasp.hol.es/?controller=Android&action=registrarse";
+        //Establecemos parametros
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("email", this.etRegistrarCorreo.getText().toString());
         params.put("nombre", this.etRegistrarNombre.getText().toString());
         params.put("password", this.etRegistrarContrasenia.getText().toString());
         String itemText = (String) etRegistrarGenero.getSelectedItem();
-        System.out.println(itemText);
         params.put("genero",itemText);
         params.put("edad", this.etRegistrarEdad.getText().toString());
-
+        //Aplicamos el json rques
         JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, REGISTER_URL,new JSONObject(params),
                 new com.android.volley.Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         if (response != null) {
-                                Toast.makeText(getActivity(),response.toString() , Toast.LENGTH_LONG).show();
+                            //si se registro exitosamente se limpian los campos de texto
+                            Toast.makeText(getActivity(),"success.." , Toast.LENGTH_LONG).show();
+                            etRegistrarConfirmarContrasenia.setText("");
+                            etRegistrarCorreo.setText("");
+                            etRegistrarEdad.setText("");
+                            etRegistrarNombre.setText("");
+                            etRegistrarContrasenia.setText("");
                         } else {
                             Toast.makeText(getActivity(), "Error..", Toast.LENGTH_LONG).show();
                         }//if-else
